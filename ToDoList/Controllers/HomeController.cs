@@ -32,6 +32,31 @@ namespace ToDoList.Controllers
             _context.SaveChanges();
             return PartialView("ItemModelPartial", lst);
         }
-
+        public IActionResult Edit(int id)
+        {
+            var item1 = _context.list.Where(x => x.Id == id).FirstOrDefault();
+            return PartialView("EditModelPartial", item1);
+        }
+        [HttpPost]
+        public IActionResult Edit(list lst)
+        {
+            _context.list.Update(lst);
+            _context.SaveChanges();
+            return PartialView("EditModelPartial", lst);
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var item1 = _context.list.Where(x => x.Id == id).FirstOrDefault();
+            return PartialView("DeleteModelPartial", item1);
+        }
+        [HttpPost]
+        public IActionResult Delete(list lst)
+        {
+            var item1 = _context.list.Where(x => x.Id == lst.Id).FirstOrDefault();
+            _context.list.Remove(item1);
+            _context.SaveChanges();
+            return PartialView("DeleteModelPartial", item1);
+        }
     }
 }

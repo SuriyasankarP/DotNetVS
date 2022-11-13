@@ -7,7 +7,8 @@ $(function () {
     var PopUp = $("#PopUp");
     $('button[data-toggle="ajax-modal"]').click(function (event) {
         var url = $(this).data('url');
-        $.get(url).done(function (data) {
+        var decodedUrl = decodeURIComponent(url)
+        $.get(decodedUrl).done(function (data) {
             PopUp.html(data);
             PopUp.find('.modal').modal('show');
         })

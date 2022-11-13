@@ -9,7 +9,7 @@
 <div id="PopUp">
 
 </div>
-<h5 class="text-center">List</h5>
+<h2 class="text-center">List</h2>
 <br>
 
 <table class="table table-bordered table-hover">
@@ -43,8 +43,13 @@
             </td>
             <td>
                 <div role="group" class="w-60 btn-group">
-                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>
-                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                    <div style="display:flex; gap:10px;" >
+                        <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#AddItem" data-url="@Url.Action($"Edit/{item.Id}")">Edit</button>
+
+                        <button type="button" class="btn btn-danger" data-toggle="ajax-modal" data-target="#AddItem" data-url="@Url.Action($"Delete/{item.Id}")">Delete</button>
+
+                    </div>
+                    
                 </div>
             </td>
 
